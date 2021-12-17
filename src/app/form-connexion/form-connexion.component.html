@@ -1,15 +1,35 @@
 <div class="row text-center">
   <div class="col-md-4"></div>
   <div class="col-md-4">
-    <form>
+    <div class="form-group" *ngIf="erreur_alerte != ''">
+      <div class="alert alert-danger" role="alert">
+        {{ erreur_alerte }}
+      </div>
+    </div>
+    <div class="form-group" *ngIf="succes_alerte != ''">
+      <div class="alert alert-success" role="alert">
+        {{ succes_alerte }}
+      </div>
+    </div>
+    <form #utilisateurFormConnexion="ngForm" (ngSubmit)="utilisateurFormConnexion.form.valid && connexion(utilisateurFormConnexion)">
       <div class="form-group">
-        <label for="courrielUtilisateur">Adresse courriel</label>
-        <input type="email" class="form-control" id="courrielUtilisateur" aria-describedby="courrielUtilisateurAide" placeholder="Entrer votre courriel...">
+        <label for="courrielUtilisateur">Adresse courriel*</label>
+        <input type="email" class="form-control" id="courrielUtilisateur" name="courrielUtilisateur" [(ngModel)]="modelIdentifiant.courriel" #courrielUtilisateur="ngModel" aria-describedby="courrielUtilisateurAide" placeholder="exemple@mondomaine.com" autofocus required>
         <small id="courrielUtilisateurAide" class="form-text text-muted">Nous allons jamais partager votre courriel avec personne d'autre.</small>
       </div>
+      <div class="form-group" *ngIf="courrielUtilisateur.invalid && (courrielUtilisateur.dirty || courrielUtilisateur.touched)">
+        <div *ngIf="courrielUtilisateur.errors?.['required']" class="alert alert-danger" role="alert">
+          Le courriel est requis.
+        </div>
+      </div>
       <div class="form-group">
-        <label for="motDePasseUtilisateur">Mot de passe</label>
-        <input type="password" class="form-control" id="motDePasseUtilisateur" placeholder="Mot de passe">
+        <label for="motDePasseUtilisateur">Mot de passe*</label>
+        <input type="password" class="form-control" id="motDePasseUtilisateur" name="motDePasseUtilisateur" [(ngModel)]="modelIdentifiant.mot_de_passe" #motDePasseUtilisateur="ngModel" placeholder="monMotDePasse" required>
+      </div>
+      <div class="form-group" *ngIf="motDePasseUtilisateur.invalid && (motDePasseUtilisateur.dirty || motDePasseUtilisateur  .touched)">
+        <div *ngIf="motDePasseUtilisateur.errors?.['required']" class="alert alert-danger" role="alert">
+          Le mot de passe est requis.
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">Se connecter</button>
     </form>

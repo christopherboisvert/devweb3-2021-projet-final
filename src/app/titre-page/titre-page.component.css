@@ -1,6 +1,9 @@
-#titre_page
+#section_titre
 {
     margin-top:25px;
-    margin-bottom:25px;
-    font-size:36px;
+}
+#titre_page {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 36px;
 }

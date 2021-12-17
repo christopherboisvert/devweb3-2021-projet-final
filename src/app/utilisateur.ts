@@ -1,6 +1,7 @@
 export class Utilisateur {
   courriel = ""
-  motDePasse = ""
+  mot_de_passe = ""
+  mot_de_passe_repeter = ""
   prenom = ""
   nom = ""
 }

@@ -1,29 +1,64 @@
 <div class="row text-center">
   <div class="col-md-4"></div>
   <div class="col-md-4">
-    <form #utilisateurFormAjout="ngForm" (ngSubmit)="ajouterUtilisateur(utilisateurFormAjout)">
+    <div class="form-group" *ngIf="erreur_alerte != ''">
+      <div class="alert alert-danger" role="alert">
+        {{ erreur_alerte }}
+      </div>
+    </div>
+    <div class="form-group" *ngIf="succes_alerte != ''">
+      <div class="alert alert-success" role="alert">
+        {{ succes_alerte }}
+      </div>
+    </div>
+    <form #utilisateurFormAjout="ngForm" (ngSubmit)="utilisateurFormAjout.form.valid && ajouterUtilisateur(utilisateurFormAjout)">
       <div class="form-group">
         <label for="courrielUtilisateur">Adresse courriel*</label>
-        <input type="email" class="form-control" id="courrielUtilisateur" aria-describedby="courrielUtilisateurAide" placeholder="exemple@mondomaine.com">
+        <input type="email" class="form-control" id="courrielUtilisateur" name="courrielUtilisateur" [(ngModel)]="modelUtilisateur.courriel" #courrielUtilisateur="ngModel" aria-describedby="courrielUtilisateurAide" placeholder="exemple@mondomaine.com" autofocus required>
         <small id="courrielUtilisateurAide" class="form-text text-muted">Nous allons jamais partager votre courriel avec personne d'autre.</small>
+      </div>
+      <div class="form-group" *ngIf="courrielUtilisateur.invalid && (courrielUtilisateur.dirty || courrielUtilisateur.touched)">
+        <div *ngIf="courrielUtilisateur.errors?.['required']" class="alert alert-danger" role="alert">
+          Le courriel est requis.
+        </div>
       </div>
       <div class="form-group">
         <label for="motDePasseUtilisateur">Mot de passe*</label>
-        <input type="password" class="form-control" id="motDePasseUtilisateur" placeholder="monMotDePasse">
+        <input type="password" class="form-control" id="motDePasseUtilisateur" name="motDePasseUtilisateur" [(ngModel)]="modelUtilisateur.mot_de_passe" #motDePasseUtilisateur="ngModel" placeholder="monMotDePasse" required>
+      </div>
+      <div class="form-group" *ngIf="motDePasseUtilisateur.invalid && (motDePasseUtilisateur.dirty || motDePasseUtilisateur  .touched)">
+        <div *ngIf="motDePasseUtilisateur.errors?.['required']" class="alert alert-danger" role="alert">
+          Le mot de passe est requis.
+        </div>
       </div>
       <div class="form-group">
         <label for="motDePasseRepeterUtilisateur">Veuillez répéter votre mot de passe*</label>
-        <input type="password" class="form-control" id="motDePasseRepeterUtilisateur" placeholder="monMotDePasse">
+        <input type="password" class="form-control" id="motDePasseRepeterUtilisateur" name="motDePasseRepeterUtilisateur" [(ngModel)]="modelUtilisateur.mot_de_passe_repeter" #motDePasseRepeterUtilisateur="ngModel" placeholder="monMotDePasse" required>
+      </div>
+      <div class="form-group" *ngIf="motDePasseRepeterUtilisateur.invalid && (motDePasseRepeterUtilisateur.dirty || motDePasseRepeterUtilisateur.touched) && motDePasseUtilisateur!=motDePasseRepeterUtilisateur">
+        <div *ngIf="prenomUtilisateur.errors?.['required']" class="alert alert-danger" role="alert">
+          Vous devez répétez le mot de passe.
+        </div>
       </div>
       <div class="form-group">
-        <label for="courrielUtilisateur">Prénom*</label>
-        <input type="text" class="form-control" id="prenomUtilisateur" placeholder="John">
+        <label for="prenomUtilisateur">Prénom*</label>
+        <input type="text" class="form-control" id="prenomUtilisateur" name="prenomUtilisateur" [(ngModel)]="modelUtilisateur.prenom" #prenomUtilisateur="ngModel" placeholder="John" required>
+      </div>
+      <div class="form-group" *ngIf="prenomUtilisateur.invalid && (prenomUtilisateur.dirty || prenomUtilisateur.touched)">
+        <div *ngIf="prenomUtilisateur.errors?.['required']" class="alert alert-danger" role="alert">
+          Le prénom est requis.
+        </div>
       </div>
       <div class="form-group">
-        <label for="courrielUtilisateur">Nom*</label>
-        <input type="text" class="form-control" id="nomUtilisateur" placeholder="Doe">
+        <label for="nomUtilisateur">Nom*</label>
+        <input type="text" class="form-control" id="nomUtilisateur" name="nomUtilisateur" [(ngModel)]="modelUtilisateur.nom" #nomUtilisateur="ngModel" placeholder="Doe" required>
       </div>
-      <button type="submit" class="btn btn-primary">M'inscrire</button>
+      <div class="form-group" *ngIf="nomUtilisateur.invalid && (nomUtilisateur.dirty || nomUtilisateur.touched)">
+        <div *ngIf="nomUtilisateur.errors?.['required']" class="alert alert-danger" role="alert">
+          Le nom est requis.
+        </div>
+      </div>
+      <button type="submit" [disabled]="!utilisateurFormAjout.form.valid" class="btn btn-primary">M'inscrire</button>
     </form>
   </div>
   <div class="col-md-4"></div>

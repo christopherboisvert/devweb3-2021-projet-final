@@ -16,6 +16,10 @@ import { PageInscriptionComponent } from './page-inscription/page-inscription.co
 import { FormInscriptionComponent } from './form-inscription/form-inscription.component';
 import { PiedPageComponent } from './pied-page/pied-page.component';
 import { GreenStockService } from './greenstock.service';
+import { DiagrammeCirculaireComponent } from './diagramme-circulaire/diagramme-circulaire.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { PageAjouterActionComponent } from './page-ajouter-action/page-ajouter-action.component';
+import { PageAjouterPortfolioComponent } from './page-ajouter-portfolio/page-ajouter-portfolio.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { GreenStockService } from './greenstock.service';
     TitrePageComponent,
     PageInscriptionComponent,
     FormInscriptionComponent,
-    PiedPageComponent
+    PiedPageComponent,
+    DiagrammeCirculaireComponent,
+    NavigationComponent,
+    PageAjouterActionComponent,
+    PageAjouterPortfolioComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Utilisateur } from './utilisateur';
 import { Observable } from 'rxjs';
+import { Identifiant } from './identifiant';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,6 +17,10 @@ export class GreenStockService {
 
   constructor(private http: HttpClient) { }
 
+  connexion(identifiant:Identifiant): Observable<any> {
+    return this.http.post<string>(this.urlBase + "connexion", identifiant, httpOptions);
+  }
+
   obtenirTousLesUtilisateurs(): Observable<Utilisateur[]> {
     return this.http.get<Utilisateur[]>(this.urlBase + "utilisateurs");
   }
@@ -24,7 +29,7 @@ export class GreenStockService {
     return this.http.get<Utilisateur>(this.urlBase + "utilisateurs/" + _id);
   }
 
-  ajouterUtilisateur(utilisateur: Utilisateur): Observable<string> {
+  ajouterUtilisateur(utilisateur: Utilisateur): Observable<any> {
     return this.http.post<string>(this.urlBase + "utilisateurs", utilisateur, httpOptions);
   }
 
