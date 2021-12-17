@@ -1,0 +1,30 @@
+<div class="row text-center">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <form #utilisateurFormAjout="ngForm" (ngSubmit)="ajouterUtilisateur(utilisateurFormAjout)">
+      <div class="form-group">
+        <label for="courrielUtilisateur">Adresse courriel*</label>
+        <input type="email" class="form-control" id="courrielUtilisateur" aria-describedby="courrielUtilisateurAide" placeholder="exemple@mondomaine.com">
+        <small id="courrielUtilisateurAide" class="form-text text-muted">Nous allons jamais partager votre courriel avec personne d'autre.</small>
+      </div>
+      <div class="form-group">
+        <label for="motDePasseUtilisateur">Mot de passe*</label>
+        <input type="password" class="form-control" id="motDePasseUtilisateur" placeholder="monMotDePasse">
+      </div>
+      <div class="form-group">
+        <label for="motDePasseRepeterUtilisateur">Veuillez répéter votre mot de passe*</label>
+        <input type="password" class="form-control" id="motDePasseRepeterUtilisateur" placeholder="monMotDePasse">
+      </div>
+      <div class="form-group">
+        <label for="courrielUtilisateur">Prénom*</label>
+        <input type="text" class="form-control" id="prenomUtilisateur" placeholder="John">
+      </div>
+      <div class="form-group">
+        <label for="courrielUtilisateur">Nom*</label>
+        <input type="text" class="form-control" id="nomUtilisateur" placeholder="Doe">
+      </div>
+      <button type="submit" class="btn btn-primary">M'inscrire</button>
+    </form>
+  </div>
+  <div class="col-md-4"></div>
+</div>

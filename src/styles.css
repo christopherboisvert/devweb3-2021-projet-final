@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: cubicblock;
+  src: url("assets/fonts/demon_cubic_block_f/cubicblock.ttf") format('truetype');
+}
