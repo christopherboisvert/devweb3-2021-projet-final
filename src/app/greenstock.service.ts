@@ -47,7 +47,7 @@ export class GreenStockService {
     return this.http.get<Action[]>(this.urlBase + "actions", httpOptions);
   }
 
-  obtenirActionParId(_id: String): Observable<Action> {
-    return this.http.get<Action>(this.urlBase + "actions/" + _id, httpOptions);
+  obtenirActionParId(_id: String): Observable<any> {
+    return this.http.get<any>(this.urlBase + "actions/" + _id, httpOptions);
   }
 }
