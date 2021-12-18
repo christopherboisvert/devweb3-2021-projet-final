@@ -36,8 +36,8 @@ export class FormInscriptionComponent implements OnInit {
         this.greenStockService.ajouterUtilisateur(this.modelUtilisateur).subscribe(response => {
           this.erreur_alerte = ""
           this.succes_alerte = response.message
-          localStorage.setItem("token", response.token)
-          this.router.navigate(['/'])
+          localStorage.setItem("token", "Bearer " + response.token)
+          this.router.navigate(['/accueil'])
         }, err => {
           if (err.status === 400) {
             if (err.error !== undefined && err.error.exception.errors.courriel.message !== undefined) {

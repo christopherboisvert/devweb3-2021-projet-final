@@ -1,0 +1,7 @@
+<div *ngIf="action" class="card col-md-4">
+  <div class="card-body">
+    <h5 class="card-title">{{ action.nom }}</h5>
+    <p class="card-text">{{ action.marche }}</p>
+    <a href="/action/{{ action.symbole }}" class="btn btn-primary">Voir action</a>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row" *ngIf="erreur_alerte != ''">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="alert alert-warning" role="alert">
+      {{ erreur_alerte }}
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<div class="row text-center">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <app-action-card *ngFor="let action of actions" [action]="action"></app-action-card>
+  </div>
+  <div class="col-md-2"></div>
+</div>

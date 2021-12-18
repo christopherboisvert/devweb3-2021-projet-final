@@ -3,9 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Utilisateur } from './utilisateur';
 import { Observable } from 'rxjs';
 import { Identifiant } from './identifiant';
+import { Action } from './action';
 
+const token = localStorage.getItem("token")
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders(
+    {
+      'authorization': token ? token : "",
+      'Content-Type': 'application/json'
+    }),
 };
 
 @Injectable({
@@ -35,5 +41,13 @@ export class GreenStockService {
 
   supprimerUtilisateur(_id?: string): Observable<any> {
     return this.http.delete<any>(this.urlBase + "utilisateurs/" + _id, httpOptions);
+  }
+
+  obtenirTousLesActions(): Observable<Action[]> {
+    return this.http.get<Action[]>(this.urlBase + "actions", httpOptions);
+  }
+
+  obtenirActionParId(_id: String): Observable<Action> {
+    return this.http.get<Action>(this.urlBase + "actions/" + _id, httpOptions);
   }
 }

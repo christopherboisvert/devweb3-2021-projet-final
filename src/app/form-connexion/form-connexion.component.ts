@@ -29,8 +29,8 @@ export class FormConnexionComponent implements OnInit {
       this.greenStockService.connexion(this.modelIdentifiant).subscribe(response => {
         this.erreur_alerte = ""
         this.succes_alerte = response.message
-        localStorage.setItem("token", response.token)
-        this.router.navigate(['/'])
+        localStorage.setItem("token", "Bearer " + response.token)
+        this.router.navigate(['/accueil'])
       }, err => {
         if (err.status === 400) {
           this.erreur_alerte = "Vos identifiants ne concordent pas.";

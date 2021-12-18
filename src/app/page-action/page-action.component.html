@@ -1,0 +1,6 @@
+<app-en-tete></app-en-tete>
+<app-navigation></app-navigation>
+<app-titre-page *ngIf="action" [titrePage]="action.nom"></app-titre-page>
+<app-titre-page *ngIf="!action" titrePage="Action non trouvé"></app-titre-page>
+<app-diagramme-ligne *ngIf="action" [action]="action"></app-diagramme-ligne>
+<app-pied-page></app-pied-page>

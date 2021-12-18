@@ -16,7 +16,7 @@ export class PageAccueilComponent implements OnInit {
 
   ngOnInit(): void {
     let token = localStorage.getItem("token");
-    if (token === null) {
+    if (token === null || token === undefined) {
       this.router.navigate(["/se-connecter"]);
     }
   }
